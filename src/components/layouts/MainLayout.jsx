@@ -2,7 +2,7 @@
 import { Outlet, useLocation } from '@tanstack/react-router'
 import Header from './Header';
 import Footer from './Footer';
-
+import Home from '../pages/LandingPage/Home'
 const MainLayout = () => {
   const location = useLocation();
 
@@ -15,6 +15,7 @@ const MainLayout = () => {
         <Header />
         
         {/* El contenido dinámico va aquí adentro */}
+        <Home />
         <main className="w-full flex-1">       
           <Outlet />     
         </main>
