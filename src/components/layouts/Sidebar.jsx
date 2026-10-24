@@ -15,18 +15,8 @@ export function Sidebar({ isOpen, setIsOpen }) {
 
   // 1. Definición de rutas por sección (Manteniendo emojis para remover en renderizado o usarlos si gustas)
   const menuPersonal = [
-    { to: '/home', label: ' Inicio' },
-    { to: '/reservation', label: '📅 Agendar Cita', search: { step: 1 } },
+    { to: '/homePage', label: ' Inicio' },
     { to: '/scheduleToday', label: '🗂️ Agenda del Día' },
-    { 
-      label: '⚙️ Configuración', 
-      isDropdown: true,
-      submenu: [
-        { to: '/filesPacients', label: '👥 Expedientes clínicos' },
-        { to: '/userSettings', label: '👥 Usuarios' },
-        { to: '/permissionsSettings', label: '👥 Roles y Permisos' },
-      ]
-    },
   ]
 
   const menuPacientes = [

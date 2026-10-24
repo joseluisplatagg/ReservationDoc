@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import { Link, Navigate, useNavigate } from '@tanstack/react-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouseChimney, faUsersViewfinder, faStaffSnake, faPaperPlane
+  , faArrowRightToBracket,  faCalendarCheck
+  } from '@fortawesome/free-solid-svg-icons';
 import logoImg from '../../../public/logo.jpg'
 
 const Header = () => {
@@ -50,29 +53,47 @@ const Header = () => {
               <div className={`${menuOpen ? 'block' : 'hidden'} w-full md:block md:w-auto absolute md:relative top-16 md:top-0 left-0 bg-neutral-primary md:bg-transparent p-4 md:p-0 shadow-lg md:shadow-none border-b md:border-none border-default`} id="navbar-default">
                 <ul className="font-medium flex flex-col md:flex-row md:space-x-8 mt-0 border-0">
                   
-                  <Link to="/" activeProps={{ className: 'block py-2 px-3 text-brand font-bold md:p-0' }}>
+                  <Link to="/home" activeProps={{ className: 'block py-2 px-3 text-brand font-bold md:p-0' }}>
+                      <div className="text-center">
+                        <FontAwesomeIcon icon={faHouseChimney} className="text-xl text-fuchsia-900 dark:text-fuchsia-800 font-extrabold" />
+                      </div>
                     Inicio
                   </Link>
                   
                   <Link to="/aboutus" activeProps={{ className: 'block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0' }}>
+                      <div className="text-center">
+                            <FontAwesomeIcon icon={faUsersViewfinder} className="text-xl text-fuchsia-900 dark:text-fuchsia-800 font-extrabold" />
+                      </div>
                     Nosotros
                   </Link>
 
                   <Link to="/services" activeProps={{ className: 'block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0' }}>
+                    <div className="text-center">
+                            <FontAwesomeIcon icon={faStaffSnake} className="text-xl text-fuchsia-900 dark:text-fuchsia-800 font-extrabold" />
+                      </div>
                     Servicios
                   </Link>
 
                   <Link to="/locations" activeProps={{ className: 'block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0' }}>
-                    Ubicación
+                    <div className="text-center">
+                            <FontAwesomeIcon icon={faPaperPlane} className="text-xl text-fuchsia-900 dark:text-fuchsia-800 font-extrabold" />
+                      </div>
+                    Contacto
                   </Link>
                   
                   <Link to="/reservation" activeProps={{ className: 'block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0' }}>
+                    <div className="text-center">
+                            <FontAwesomeIcon icon={faCalendarCheck} className="text-xl text-fuchsia-900 dark:text-fuchsia-800 font-extrabold" />
+                      </div>
                     Agenda
                   </Link>
 
-                  <Link to="/login" activeProps={{ className: 'block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0' }}>
+                  {/* <Link to="/login" activeProps={{ className: 'block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0' }}>
+                    <div className="text-center">
+                            <FontAwesomeIcon icon={faArrowRightToBracket} className="text-xl text-fuchsia-900 dark:text-fuchsia-800 font-extrabold" />
+                      </div>
                     Perfil
-                  </Link>
+                  </Link> */}
                 </ul>
               </div>
       

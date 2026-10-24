@@ -1,18 +1,20 @@
 // src/components/reservar/StepMedico.jsx
 import React, { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCheck, faHospitalUser, faUserDoctor, faNotesMedical,faHouseMedicalCircleCheck} from '@fortawesome/free-solid-svg-icons';
 
 export default function StepMedico({ reservaData, onNext, onBack }) {
   // 1. Simulación de médicos. En producción, esto vendría de un 'fetch' a tu tabla de PostgreSQL
   const [medicos] = useState([
     { 
       id: 1, 
-      nombre: 'Dr. Alejandro Ríos', 
-      especialidad: 'Cardiología', 
+      nombre: 'Dr. Fernando Astudillo', 
+      especialidad: 'Ginecología y Obstetricia', 
       universidad: 'UNAM • Céd. 1234567',
       disponibilidad: 'Disponible hoy',
       colorBadge: 'bg-emerald-100 text-emerald-700'
     },
-    { 
+    /* { 
       id: 2, 
       nombre: 'Dra. Beatriz Elena Silva', 
       especialidad: 'Pediatría Médica', 
@@ -27,7 +29,7 @@ export default function StepMedico({ reservaData, onNext, onBack }) {
       universidad: 'IPN • Céd. 9876543',
       disponibilidad: 'Agenda llena esta semana',
       colorBadge: 'bg-rose-100 text-rose-700'
-    }
+    } */
   ])
 
   // Estado local para capturar al médico seleccionado (inicializa con lo que ya tenga el contenedor si regresas atrás)
@@ -52,7 +54,7 @@ export default function StepMedico({ reservaData, onNext, onBack }) {
     <form onSubmit={handleSubmit} className='flex flex-col gap-6 w-full animate-fade-in'>
       <div className='flex flex-col gap-3'>
         <label className='text-sm font-bold text-gray-700'>
-          Selecciona al profesional de la salud que ofrecerá el servicio:
+          <FontAwesomeIcon  icon={faUserCheck} /> Selecciona al profesional de la salud que ofrecerá el servicio:
         </label>
 
         {/* CONTENEDOR GRID RESPONSIVO */}
@@ -75,14 +77,14 @@ export default function StepMedico({ reservaData, onNext, onBack }) {
 
               {/* Información Profesional */}
               <div className='flex flex-col gap-0.5 flex-1 pr-6'>
-                <span className='font-bold text-sm text-gray-800'>{medico.nombre}</span>
-                <span className='text-xs font-bold text-fuchsia-900'>{medico.especialidad}</span>
-                <span className='text-[11px] text-gray-400 font-medium'>{medico.universidad}</span>
+                <span className='font-bold text-sm text-gray-800'><FontAwesomeIcon  icon={faUserDoctor} /> {medico.nombre}</span>
+                <span className='text-xs font-bold text-fuchsia-900'><FontAwesomeIcon  icon={faNotesMedical} /> {medico.especialidad}</span>
+                <span className='text-[11px] text-gray-400 font-medium'>  {medico.universidad}</span>
                 
                 {/* Badge de Disponibilidad */}
                 <div className='mt-2'>
                   <span className={`text-2xs font-bold px-2 py-0.5 rounded-full ${medico.colorBadge}`}>
-                    {medico.disponibilidad}
+                    {medico.disponibilidad} <FontAwesomeIcon  icon={faHouseMedicalCircleCheck} />
                   </span>
                 </div>
               </div>
@@ -98,7 +100,7 @@ export default function StepMedico({ reservaData, onNext, onBack }) {
         </div>
       </div>
 
-      {/* BOTONES DE ACCIÓN (Rifadísimos al cierre) */}
+      {/* BOTONES DE ACCIÓN */}
       <div className='flex justify-between items-center mt-4 border-t border-gray-100 pt-4 w-full'>
         <button 
           type='button' 

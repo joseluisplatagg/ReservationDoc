@@ -1,5 +1,6 @@
 // ui elements
 import Title from "./Title";
+import ImgLogo from "../../../public/logo.jpg"
 
 export default function Hero({ title, image, className = "" }) {
   return (
@@ -24,9 +25,13 @@ export default function Hero({ title, image, className = "" }) {
           F
         </span> */}
         {/* Emblema circular secundario */}
-        {/* <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/50 flex items-center justify-center text-[9px] font-sans tracking-tighter text-center leading-none text-white/90 bg-white/5 backdrop-blur-xs">
-          LOGO
-        </div> */}
+        <div className="w-29 h-29 rounded-xl bg-emerald-900 text-white flex items-center justify-center font-black shadow-sm overflow-hidden">
+          <img  
+            src={ImgLogo} 
+            alt="Logotipo" 
+            className="h-29 w-29 object-contain transition-transform duration-200 group-hover:scale-110" 
+          />
+        </div> 
       </div>
 
       {/* TÍTULO PRINCIPAL (Serif elegante con peso normal/ligero) */}

@@ -1,6 +1,7 @@
 // src/components/reservar/StepPaciente.jsx
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBookMedical, faHospitalUser, faReceipt} from '@fortawesome/free-solid-svg-icons';
 
 export function StepPaciente({ reservaData, onNext }) {
   // 1. Simulación de pacientes ya registrados en la cuenta (Tú + Familiares)
@@ -13,14 +14,14 @@ export function StepPaciente({ reservaData, onNext }) {
 
   // Estados locales para controlar la selección
   const [selectedId, setSelectedId] = useState(reservaData.pacienteId || 'user-01')
-  const [isAddingNew, setIsAddingNew] = useState(false)
+  const [isAddingNew, setIsAddingNew] = useState(true)
   const [motivo, setMotivo] = useState(reservaData.motivo || '')
-  const [pacienteSeleccionadoId, setPacienteSeleccionadoId] = useState(reservaData.pacienteId || '')
+  //const [pacienteSeleccionadoId, setPacienteSeleccionadoId] = useState(reservaData.pacienteId || '')
 
   // Estado para el formulario de un nuevo familiar
   const [nuevoFamiliar, setNuevoFamiliar] = useState({
     nombre: '',
-    relacion: '',
+    telefono: '',
     edad: ''
   })
 
@@ -43,7 +44,7 @@ export function StepPaciente({ reservaData, onNext }) {
         <label className='text-sm font-bold text-gray-700'>¿Quién asistirá a la consulta médica?</label>
         
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
-          {pacientesRegistrados.map((paciente) => (
+          {/* {pacientesRegistrados.map((paciente) => (
             <div
               key={paciente.id}
               onClick={() => {
@@ -66,7 +67,7 @@ export function StepPaciente({ reservaData, onNext }) {
                 <span className='text-xs text-gray-500'>{paciente.relacion} • {paciente.edad} años</span>
               </div>
             </div>
-          ))}
+          ))} */}
 
           {/* Opción para registrar otro paciente en el momento */}
           <div
@@ -83,7 +84,7 @@ export function StepPaciente({ reservaData, onNext }) {
             </div>
             <div className='flex items-center gap-2'>
               <FontAwesomeIcon icon='fa-solid fa-circle-plus' className='text-fuchsia-900 text-lg' />
-              <span className='font-bold text-sm'>Alguien más (Familiar / Dependiente)</span>
+              <span className='font-bold text-sm'><FontAwesomeIcon  icon={faHospitalUser} /> Información del Paciente</span>
             </div>
           </div>
         </div>
@@ -92,7 +93,7 @@ export function StepPaciente({ reservaData, onNext }) {
       {/* FORMULARIO CONDICIONAL PARA NUEVO FAMILIAR */}
       {isAddingNew && (
         <div className='p-4 bg-gray-50 border border-gray-100 rounded-xl flex flex-col gap-4 animate-slide-down'>
-          <span className='text-xs font-bold text-gray-500 uppercase tracking-wider'>Datos del nuevo paciente</span>
+          <span className='text-xs font-bold text-gray-500 uppercase tracking-wider'><FontAwesomeIcon  icon={faBookMedical} /> Datos del nuevo paciente</span>
           
           <div className='grid grid-cols-1 sm:grid-cols-3 gap-3'>
             <input 
@@ -103,9 +104,10 @@ export function StepPaciente({ reservaData, onNext }) {
             />
             <input 
               className='h-9 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-fuchsia-900 bg-white'
-              placeholder='Parentesco (ej. Hijo, Esposo)' type='text' required={isAddingNew}
-              value={nuevoFamiliar.relacion}
-              onChange={(e) => setNuevoFamiliar({...nuevoFamiliar, relacion: e.target.value})}
+              placeholder='Telefono 55-1234-5678' type='tel' required={isAddingNew} id="telefono" 
+              name="telefono" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}" 
+              value={nuevoFamiliar.telefono}
+              onChange={(e) => setNuevoFamiliar({...nuevoFamiliar, telefono: e.target.value})}
             />
             <input 
               className='h-9 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-fuchsia-900 bg-white'
@@ -119,7 +121,7 @@ export function StepPaciente({ reservaData, onNext }) {
 
       {/* MOTIVO DE CONSULTA (Texto abierto para pre-diagnóstico) */}
       <div className='flex flex-col gap-2'>
-        <label htmlFor='motivo' className='text-sm font-bold text-gray-700'>Motivo de la consulta (Opcional)</label>
+        <label htmlFor='motivo' className='text-sm font-bold text-gray-700'><FontAwesomeIcon  icon={faReceipt} /> Motivo de la consulta (Opcional)</label>
         <textarea
           id='motivo'
           rows='3'
@@ -134,11 +136,7 @@ export function StepPaciente({ reservaData, onNext }) {
       <div className='flex justify-end mt-4 border-t border-gray-100 pt-4'>
         <button 
           type='submit'
-          disabled={!pacienteSeleccionadoId}
-          className={`font-bold px-6 py-2.5 rounded-full text-sm transition-all duration-200
-            ${pacienteSeleccionadoId 
-              ? 'bg-linear-to-r from-fuchsia-900 to-fuchsia-900 text-white font-bold px-8 py-3 rounded-full text-sm shadow-xl shadow-fuchsia-900/20 hover:from-fuchsia-900 hover:to-fuchsia-900 transition-all duration-300 transform active:scale-95 cursor-pointer disabled:opacity-50 flex items-center gap-2' 
-              : 'bg-gray-200 text-gray-400 cursor-not-allowed'}`}
+          className="bg-linear-to-r from-fuchsia-900 to-fuchsia-900 text-white font-bold px-8 py-3 rounded-full text-sm shadow-xl shadow-fuchsia-900/20 hover:from-fuchsia-900 hover:to-fuchsia-900 transition-all duration-300 transform active:scale-95 cursor-pointer disabled:opacity-50 flex items-center gap-2"
         >
           Continuar al Calendario →
         </button>

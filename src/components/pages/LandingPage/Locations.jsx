@@ -2,11 +2,12 @@ import Contacto from "./Contacto";
 import Hero from "../../layouts/Hero";
 import { createRoute } from '@tanstack/react-router'
 import { Route } from '../../../routes/__root'
+import ImgLogo from '../../../../public/logo.jpg'
 
 const Locations = () => {
     return(
             <>
-            <Hero title={"Contacto"} image={""} className=""/>
+            <Hero title={"Contacto"} image={ImgLogo} className=""/>
 
             <div className="w-full max-w-7xl mx-auto p-6 bg-neutral-primary-soft rounded-base shadow-xl my-8">
     
