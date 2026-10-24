@@ -14,17 +14,18 @@ import { Route as _authenticatedRouteImport } from './routes/__authenticated'
 import { Route as _publicRouteImport } from './routes/__public'
 import { Route as FilesPacientsRouteImport } from './routes/filesPacients'
 import { Route as PermissionsSettingsRouteImport } from './routes/permissionsSettings'
-import { Route as ReservationRouteImport } from './routes/reservation'
 import { Route as ScheduleTodayRouteImport } from './routes/scheduleToday'
 import { Route as UserSettingsRouteImport } from './routes/userSettings'
 import { Route as _authenticatedDashboardRouteImport } from './routes/__authenticated/dashboard'
-import { Route as _authenticatedHomeRouteImport } from './routes/__authenticated/home'
+import { Route as _authenticatedHomePageRouteImport } from './routes/__authenticated/homePage'
 import { Route as _authenticatedSettingsRouteImport } from './routes/__authenticated/settings'
 import { Route as _publicAboutusRouteImport } from './routes/__public/aboutus'
 import { Route as _publicForgotPasswordRouteImport } from './routes/__public/forgotPassword'
+import { Route as _publicHomeRouteImport } from './routes/__public/home'
 import { Route as _publicLocationsRouteImport } from './routes/__public/locations'
 import { Route as _publicLoginRouteImport } from './routes/__public/login'
 import { Route as _publicRegisterRouteImport } from './routes/__public/register'
+import { Route as _publicReservationRouteImport } from './routes/__public/reservation'
 import { Route as _publicServicesRouteImport } from './routes/__public/services'
 import { Route as _publicSocialMediaRouteImport } from './routes/__public/socialMedia'
 
@@ -51,11 +52,6 @@ const PermissionsSettingsRoute = PermissionsSettingsRouteImport.update({
   path: '/permissionsSettings',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ReservationRoute = ReservationRouteImport.update({
-  id: '/reservation',
-  path: '/reservation',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ScheduleTodayRoute = ScheduleTodayRouteImport.update({
   id: '/scheduleToday',
   path: '/scheduleToday',
@@ -71,9 +67,9 @@ const _authenticatedDashboardRoute = _authenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => _authenticatedRoute,
 } as any)
-const _authenticatedHomeRoute = _authenticatedHomeRouteImport.update({
-  id: '/home',
-  path: '/home',
+const _authenticatedHomePageRoute = _authenticatedHomePageRouteImport.update({
+  id: '/homePage',
+  path: '/homePage',
   getParentRoute: () => _authenticatedRoute,
 } as any)
 const _authenticatedSettingsRoute = _authenticatedSettingsRouteImport.update({
@@ -91,6 +87,11 @@ const _publicForgotPasswordRoute = _publicForgotPasswordRouteImport.update({
   path: '/forgotPassword',
   getParentRoute: () => _publicRoute,
 } as any)
+const _publicHomeRoute = _publicHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => _publicRoute,
+} as any)
 const _publicLocationsRoute = _publicLocationsRouteImport.update({
   id: '/locations',
   path: '/locations',
@@ -104,6 +105,11 @@ const _publicLoginRoute = _publicLoginRouteImport.update({
 const _publicRegisterRoute = _publicRegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => _publicRoute,
+} as any)
+const _publicReservationRoute = _publicReservationRouteImport.update({
+  id: '/reservation',
+  path: '/reservation',
   getParentRoute: () => _publicRoute,
 } as any)
 const _publicServicesRoute = _publicServicesRouteImport.update({
@@ -121,17 +127,18 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/filesPacients': typeof FilesPacientsRoute
   '/permissionsSettings': typeof PermissionsSettingsRoute
-  '/reservation': typeof ReservationRoute
   '/scheduleToday': typeof ScheduleTodayRoute
   '/userSettings': typeof UserSettingsRoute
   '/dashboard': typeof _authenticatedDashboardRoute
-  '/home': typeof _authenticatedHomeRoute
+  '/homePage': typeof _authenticatedHomePageRoute
   '/settings': typeof _authenticatedSettingsRoute
   '/aboutus': typeof _publicAboutusRoute
   '/forgotPassword': typeof _publicForgotPasswordRoute
+  '/home': typeof _publicHomeRoute
   '/locations': typeof _publicLocationsRoute
   '/login': typeof _publicLoginRoute
   '/register': typeof _publicRegisterRoute
+  '/reservation': typeof _publicReservationRoute
   '/services': typeof _publicServicesRoute
   '/socialMedia': typeof _publicSocialMediaRoute
 }
@@ -139,17 +146,18 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/filesPacients': typeof FilesPacientsRoute
   '/permissionsSettings': typeof PermissionsSettingsRoute
-  '/reservation': typeof ReservationRoute
   '/scheduleToday': typeof ScheduleTodayRoute
   '/userSettings': typeof UserSettingsRoute
   '/dashboard': typeof _authenticatedDashboardRoute
-  '/home': typeof _authenticatedHomeRoute
+  '/homePage': typeof _authenticatedHomePageRoute
   '/settings': typeof _authenticatedSettingsRoute
   '/aboutus': typeof _publicAboutusRoute
   '/forgotPassword': typeof _publicForgotPasswordRoute
+  '/home': typeof _publicHomeRoute
   '/locations': typeof _publicLocationsRoute
   '/login': typeof _publicLoginRoute
   '/register': typeof _publicRegisterRoute
+  '/reservation': typeof _publicReservationRoute
   '/services': typeof _publicServicesRoute
   '/socialMedia': typeof _publicSocialMediaRoute
 }
@@ -160,17 +168,18 @@ export interface FileRoutesById {
   '/__public': typeof _publicRouteWithChildren
   '/filesPacients': typeof FilesPacientsRoute
   '/permissionsSettings': typeof PermissionsSettingsRoute
-  '/reservation': typeof ReservationRoute
   '/scheduleToday': typeof ScheduleTodayRoute
   '/userSettings': typeof UserSettingsRoute
   '/__authenticated/dashboard': typeof _authenticatedDashboardRoute
-  '/__authenticated/home': typeof _authenticatedHomeRoute
+  '/__authenticated/homePage': typeof _authenticatedHomePageRoute
   '/__authenticated/settings': typeof _authenticatedSettingsRoute
   '/__public/aboutus': typeof _publicAboutusRoute
   '/__public/forgotPassword': typeof _publicForgotPasswordRoute
+  '/__public/home': typeof _publicHomeRoute
   '/__public/locations': typeof _publicLocationsRoute
   '/__public/login': typeof _publicLoginRoute
   '/__public/register': typeof _publicRegisterRoute
+  '/__public/reservation': typeof _publicReservationRoute
   '/__public/services': typeof _publicServicesRoute
   '/__public/socialMedia': typeof _publicSocialMediaRoute
 }
@@ -180,17 +189,18 @@ export interface FileRouteTypes {
     | '/'
     | '/filesPacients'
     | '/permissionsSettings'
-    | '/reservation'
     | '/scheduleToday'
     | '/userSettings'
     | '/dashboard'
-    | '/home'
+    | '/homePage'
     | '/settings'
     | '/aboutus'
     | '/forgotPassword'
+    | '/home'
     | '/locations'
     | '/login'
     | '/register'
+    | '/reservation'
     | '/services'
     | '/socialMedia'
   fileRoutesByTo: FileRoutesByTo
@@ -198,17 +208,18 @@ export interface FileRouteTypes {
     | '/'
     | '/filesPacients'
     | '/permissionsSettings'
-    | '/reservation'
     | '/scheduleToday'
     | '/userSettings'
     | '/dashboard'
-    | '/home'
+    | '/homePage'
     | '/settings'
     | '/aboutus'
     | '/forgotPassword'
+    | '/home'
     | '/locations'
     | '/login'
     | '/register'
+    | '/reservation'
     | '/services'
     | '/socialMedia'
   id:
@@ -218,17 +229,18 @@ export interface FileRouteTypes {
     | '/__public'
     | '/filesPacients'
     | '/permissionsSettings'
-    | '/reservation'
     | '/scheduleToday'
     | '/userSettings'
     | '/__authenticated/dashboard'
-    | '/__authenticated/home'
+    | '/__authenticated/homePage'
     | '/__authenticated/settings'
     | '/__public/aboutus'
     | '/__public/forgotPassword'
+    | '/__public/home'
     | '/__public/locations'
     | '/__public/login'
     | '/__public/register'
+    | '/__public/reservation'
     | '/__public/services'
     | '/__public/socialMedia'
   fileRoutesById: FileRoutesById
@@ -239,7 +251,6 @@ export interface RootRouteChildren {
   _publicRoute: typeof _publicRouteWithChildren
   FilesPacientsRoute: typeof FilesPacientsRoute
   PermissionsSettingsRoute: typeof PermissionsSettingsRoute
-  ReservationRoute: typeof ReservationRoute
   ScheduleTodayRoute: typeof ScheduleTodayRoute
   UserSettingsRoute: typeof UserSettingsRoute
 }
@@ -281,13 +292,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PermissionsSettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/reservation': {
-      id: '/reservation'
-      path: '/reservation'
-      fullPath: '/reservation'
-      preLoaderRoute: typeof ReservationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/scheduleToday': {
       id: '/scheduleToday'
       path: '/scheduleToday'
@@ -309,11 +313,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof _authenticatedDashboardRouteImport
       parentRoute: typeof _authenticatedRoute
     }
-    '/__authenticated/home': {
-      id: '/__authenticated/home'
-      path: '/home'
-      fullPath: '/home'
-      preLoaderRoute: typeof _authenticatedHomeRouteImport
+    '/__authenticated/homePage': {
+      id: '/__authenticated/homePage'
+      path: '/homePage'
+      fullPath: '/homePage'
+      preLoaderRoute: typeof _authenticatedHomePageRouteImport
       parentRoute: typeof _authenticatedRoute
     }
     '/__authenticated/settings': {
@@ -337,6 +341,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof _publicForgotPasswordRouteImport
       parentRoute: typeof _publicRoute
     }
+    '/__public/home': {
+      id: '/__public/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof _publicHomeRouteImport
+      parentRoute: typeof _publicRoute
+    }
     '/__public/locations': {
       id: '/__public/locations'
       path: '/locations'
@@ -358,6 +369,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof _publicRegisterRouteImport
       parentRoute: typeof _publicRoute
     }
+    '/__public/reservation': {
+      id: '/__public/reservation'
+      path: '/reservation'
+      fullPath: '/reservation'
+      preLoaderRoute: typeof _publicReservationRouteImport
+      parentRoute: typeof _publicRoute
+    }
     '/__public/services': {
       id: '/__public/services'
       path: '/services'
@@ -377,13 +395,13 @@ declare module '@tanstack/react-router' {
 
 interface _authenticatedRouteChildren {
   _authenticatedDashboardRoute: typeof _authenticatedDashboardRoute
-  _authenticatedHomeRoute: typeof _authenticatedHomeRoute
+  _authenticatedHomePageRoute: typeof _authenticatedHomePageRoute
   _authenticatedSettingsRoute: typeof _authenticatedSettingsRoute
 }
 
 const _authenticatedRouteChildren: _authenticatedRouteChildren = {
   _authenticatedDashboardRoute: _authenticatedDashboardRoute,
-  _authenticatedHomeRoute: _authenticatedHomeRoute,
+  _authenticatedHomePageRoute: _authenticatedHomePageRoute,
   _authenticatedSettingsRoute: _authenticatedSettingsRoute,
 }
 
@@ -394,9 +412,11 @@ const _authenticatedRouteWithChildren = _authenticatedRoute._addFileChildren(
 interface _publicRouteChildren {
   _publicAboutusRoute: typeof _publicAboutusRoute
   _publicForgotPasswordRoute: typeof _publicForgotPasswordRoute
+  _publicHomeRoute: typeof _publicHomeRoute
   _publicLocationsRoute: typeof _publicLocationsRoute
   _publicLoginRoute: typeof _publicLoginRoute
   _publicRegisterRoute: typeof _publicRegisterRoute
+  _publicReservationRoute: typeof _publicReservationRoute
   _publicServicesRoute: typeof _publicServicesRoute
   _publicSocialMediaRoute: typeof _publicSocialMediaRoute
 }
@@ -404,9 +424,11 @@ interface _publicRouteChildren {
 const _publicRouteChildren: _publicRouteChildren = {
   _publicAboutusRoute: _publicAboutusRoute,
   _publicForgotPasswordRoute: _publicForgotPasswordRoute,
+  _publicHomeRoute: _publicHomeRoute,
   _publicLocationsRoute: _publicLocationsRoute,
   _publicLoginRoute: _publicLoginRoute,
   _publicRegisterRoute: _publicRegisterRoute,
+  _publicReservationRoute: _publicReservationRoute,
   _publicServicesRoute: _publicServicesRoute,
   _publicSocialMediaRoute: _publicSocialMediaRoute,
 }
@@ -420,7 +442,6 @@ const rootRouteChildren: RootRouteChildren = {
   _publicRoute: _publicRouteWithChildren,
   FilesPacientsRoute: FilesPacientsRoute,
   PermissionsSettingsRoute: PermissionsSettingsRoute,
-  ReservationRoute: ReservationRoute,
   ScheduleTodayRoute: ScheduleTodayRoute,
   UserSettingsRoute: UserSettingsRoute,
 }

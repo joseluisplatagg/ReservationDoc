@@ -1,7 +1,8 @@
 // src/routes/reservar.jsx
 import { createFileRoute, useNavigate, useSearch } from '@tanstack/react-router'
 import { useState,useEffect  } from 'react'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoePrints} from '@fortawesome/free-solid-svg-icons';
 // Componentes secundarios que crearemos a continuación (Paso 1, 2 , 3 y 4)
 import { StepPaciente } from './StepPaciente'
 import  StepMedico  from './StepMedico'
@@ -13,7 +14,7 @@ export default function ReservarContainer() {
  
   const navigate = useNavigate()
   // 2. Obtenemos el paso actual directamente de la URL gracias a TanStack Router
-  const { step } = useSearch({ from: '/reservation' })
+  const { step } = useSearch({ from: '/__public/reservation' })
  const currentStep = Number(step) || 1
   // 3. Estado centralizado que acumulará toda la información de la reserva
   const [reservaData, setReservaData] = useState({
@@ -83,8 +84,8 @@ export default function ReservarContainer() {
       <div className='bg-white p-6 rounded-xl border border-gray-100 shadow-xl shadow-gray-100/50 min-h-[300px] flex flex-col justify-between'>
         {currentStep === 1 && (
           <div>
-            <h3 className='text-lg font-bold text-gray-800 mb-4'>Paso 1: ¿Para quién es la consulta?</h3>
-            
+            <h3 className='text-lg font-bold text-gray-800 mb-4'>
+              <FontAwesomeIcon  icon={faShoePrints} /> Paso 1: ¿Para quién es la consulta?</h3>
             {/* 
               CORRECCIÓN: Inyectamos el componente real pasándole las propiedades 
               necesarias y eliminamos los divs y botones de simulación viejos.
@@ -95,7 +96,7 @@ export default function ReservarContainer() {
 
         {currentStep === 2 && (
           <div>
-            <h3 className='text-lg font-bold text-gray-800 mb-4'>Paso 2: Selecciona Doctor</h3>
+            <h3 className='text-lg font-bold text-gray-800 mb-4'><FontAwesomeIcon  icon={faShoePrints} /> Paso 2: Selecciona Doctor</h3>
             
             <div className='py-5 w-full flex justify-center'>
               <StepMedico reservaData={reservaData} onNext={nextStep} onBack={prevStep} />
@@ -105,7 +106,7 @@ export default function ReservarContainer() {
 
         {currentStep === 3 && (
           <div>
-            <h3 className='text-lg font-bold text-gray-800 mb-4'>Paso 3: Selecciona Fecha y Hora</h3>
+            <h3 className='text-lg font-bold text-gray-800 mb-4'><FontAwesomeIcon  icon={faShoePrints} /> Paso 3: Selecciona Fecha y Hora</h3>
             
             <div className='py-5 w-full flex justify-center'>
               <Calendar reservaData={reservaData} onNext={nextStep} onBack={prevStep} />
@@ -116,7 +117,7 @@ export default function ReservarContainer() {
 
         {currentStep === 4 && (
           <div>
-            <h3 className='text-lg font-bold text-gray-800 mb-4'>Paso 4: Confirma los datos de tu cita</h3>
+            <h3 className='text-lg font-bold text-gray-800 mb-4'><FontAwesomeIcon  icon={faShoePrints} /> Paso 4: Confirma los datos de tu cita</h3>
             {/* <StepResumen reservaData={reservaData} onBack={prevStep} /> */}
             <div className='py-5 w-full flex justify-center'>
               <ReservationConfirm reservaData={reservaData} onNext={nextStep} onBack={prevStep} />

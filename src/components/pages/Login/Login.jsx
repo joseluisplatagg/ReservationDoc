@@ -17,7 +17,7 @@ const Login = () => {
   const { mutate, isLoading, isError, isSuccess, error } = useLogin();
   
   const handleSubmit = async (event) => {
-    navigate({ to: '/home' })
+    navigate({ to: '/homePage' })
     event.preventDefault();
     
     // Lógica de autenticación...

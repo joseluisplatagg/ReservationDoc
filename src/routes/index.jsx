@@ -5,7 +5,7 @@ export const Route = createFileRoute('/')({
   beforeLoad: ({ context }) => {
     // -> HomePagePrincipal
     if (context.auth.isAuthenticated) {
-      throw redirect({ to: '/home/principal' })
+      throw redirect({ to: '/home' })
     }
   },
   component: MainLayout, 

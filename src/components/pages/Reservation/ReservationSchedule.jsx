@@ -7,7 +7,6 @@ import { StepPaciente } from './StepPaciente'
 import  StepMedico  from './StepMedico'
 import  ReservationConfirm  from './ReservationConfirm'
 import { Calendar } from './Calendar'
-// import { StepResumen } from '../components/reservar/StepResumen'
 
 export default function ReservationSchedule() {
  
