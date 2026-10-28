@@ -1,4 +1,3 @@
-const API_BASE_URL = 'http://localhost:5024/api/v1/calendar';
 
 /**
  * Función genérica para realizar peticiones HTTP.
@@ -8,7 +7,7 @@ const API_BASE_URL = 'http://localhost:5024/api/v1/calendar';
  */
 
 async function apiFetch(endpoint, options = {}) {
-  const url = `${API_BASE_URL}${endpoint}`;
+  const url = `${import.meta.env.VITE_API_BASE_URL}${endpoint}`; 
   const token = localStorage.getItem('apiToken');
   // Encabezados predeterminados, como para JSON y autenticación
   const defaultHeaders = {
