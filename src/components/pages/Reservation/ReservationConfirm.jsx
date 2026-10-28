@@ -2,10 +2,13 @@
 import React, { useState } from 'react'
 import { format, parseISO } from 'date-fns'
 import { es } from 'date-fns/locale'
+import { crearCita } from '../../../api/calendar'
+import { Eraser } from 'lucide-react'
 
 export default function ReservationConfirm({ reservaData, onBack }) {
   const [isSaving, setIsSaving] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  
 
   // Formateamos la fecha recolectada de forma elegante para el ticket
   const fechaFormateada = reservaData.fecha 
@@ -14,18 +17,33 @@ export default function ReservationConfirm({ reservaData, onBack }) {
 
   const handleConfirmarCita = async () => {
     setIsSaving(true)
-    try {
-      // 🚀 Aquí se realizaría la petición fetch/axios hacia tu backend de PostgreSQL
-      // const response = await fetch('/api/citas', { method: 'POST', body: JSON.stringify(reservaData) })
-      
-      // Simulamos la respuesta exitosa del servidor
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      setIsSuccess(true)
-    } catch (error) {
-      console.error("Error al guardar la cita en Postgres:", error)
-    } finally {
-      setIsSaving(false)
-    }
+
+    var CrearCitaRequestDTO = {
+        "Paciente":{
+          "PacienteNombre": reservaData.nuevoPaciente.nombre,
+          "PacienteTelefono":reservaData.nuevoPaciente.telefono,
+          "PacienteEdad":reservaData.nuevoPaciente.edad
+        },
+        "DoctorSeleccionado":reservaData.medicoNombre,
+        "FechaCita":reservaData.fecha,
+        "HoraCita":reservaData.hora.slice(0,5)
+      };
+
+    await new Promise(resolve => setTimeout(resolve, 1500))
+    crearCita(CrearCitaRequestDTO)
+    .then((response) => {      
+      setIsSuccess(true);      
+      return;
+    })
+    .catch((error) => {
+        // Se ejecuta si la promesa es rechazada (error)
+        console.error("Hubo un error al crear la cita:", error);
+    })
+    .finally(() => {
+        setIsSaving(false)
+        return;
+    });
+
   }
 
   // PANTALLA DE ÉXITO (Confirmación Visual Final)

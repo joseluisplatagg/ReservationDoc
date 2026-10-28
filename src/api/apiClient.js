@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3009/api';
+const API_BASE_URL = 'http://localhost:5024/api/v1/calendar';
 
 /**
  * Función genérica para realizar peticiones HTTP.
@@ -13,13 +13,12 @@ async function apiFetch(endpoint, options = {}) {
   // Encabezados predeterminados, como para JSON y autenticación
   const defaultHeaders = {
     'Content-Type': 'application/json',
-    'authorization': `Bearer ${token}` // Ejemplo de autenticación
-  };
+    //'authorization': `Bearer ${token}` // Ejemplo de autenticación
+  }; 
 
-  if (token) {
+  /* if (token) {
     defaultHeaders['authorization'] = `Bearer ${token}`;
-  }
-
+  } */
 
   const config = {
     ...options, // Se conservan las opciones personalizadas
@@ -31,18 +30,23 @@ async function apiFetch(endpoint, options = {}) {
   
   try {
     const response = await fetch(url, config);
-    const res = await response.json()
     
-    // El método `fetch` no lanza un error en respuestas 4xx o 5xx. Hay que verificar `response.ok`.
-    if (res.status == "error") {
-      
-      return res.status;
+    // 1. Si el servidor responde con un error de red o HTTP (4xx, 5xx), manejamos el fallo
+    if (!response.ok) {
+      console.error(`Error HTTP: ${response.status}`);
+      return null; 
+    }
+
+    const res = await response.json();
+    
+    // 2. Si tu backend acostumbra mandar { status: 'error', message: '...' } dentro de un 200 OK
+    if (res && res.status === "error") {
+      return null;
     }
     
-    // Maneja la respuesta si está vacía (por ejemplo, para peticiones DELETE).
-    if (res.status == 'success') {
-      return res;
-    }
+    // 3. RETORNO UNIVERSAL: Devolvemos la respuesta procesada, sea un objeto o un array de citas
+    return res;
+
   } catch (error) {
     console.error('Error en la petición a la API:', error);
     throw error; // Propaga el error para que sea manejado por el código que hizo la llamada.

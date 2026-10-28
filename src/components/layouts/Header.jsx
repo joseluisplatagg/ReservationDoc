@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import { Link, Navigate, useNavigate } from '@tanstack/react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseChimney, faUsersViewfinder, faStaffSnake, faPaperPlane
-  , faArrowRightToBracket,  faCalendarCheck
+  , faArrowRightToBracket,  faCalendarCheck,
+  faCalendarAlt
   } from '@fortawesome/free-solid-svg-icons';
 import logoImg from '../../../public/logo.jpg'
 
@@ -85,15 +86,15 @@ const Header = () => {
                     <div className="text-center">
                             <FontAwesomeIcon icon={faCalendarCheck} className="text-xl text-fuchsia-900 dark:text-fuchsia-800 font-extrabold" />
                       </div>
-                    Agenda
+                    Reserva
                   </Link>
 
-                  {/* <Link to="/login" activeProps={{ className: 'block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0' }}>
-                    <div className="text-center">
-                            <FontAwesomeIcon icon={faArrowRightToBracket} className="text-xl text-fuchsia-900 dark:text-fuchsia-800 font-extrabold" />
+                  <Link to="/scheduleToday" activeProps={{ className: 'block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0' }}>
+                    <div className="text-center ">
+                            <FontAwesomeIcon icon={faCalendarAlt} className="text-xl text-fuchsia-900 dark:text-fuchsia-800 font-extrabold" />
                       </div>
-                    Perfil
-                  </Link> */}
+                    Citas Actuales
+                  </Link> 
                 </ul>
               </div>
       
