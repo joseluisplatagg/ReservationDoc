@@ -33,6 +33,7 @@ jobs:
           output_location: "dist" # Built app content directory - optional
         env: 
           VITE_HORARIOS: "09:00,10:00,11:00,12:00,13:00,15:00,16:00,17:00,18:00,19:00,20:00,21:00"
+          VITE_API_BASE_URL: "https://wsreservacionesdoc-fdd5gaajgjcwc8cj.mexicocentral-01.azurewebsites.net/api/v1/calendar"
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
