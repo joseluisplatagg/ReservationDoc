@@ -89,12 +89,12 @@ const Header = () => {
                     Reserva
                   </Link>
 
-                  <Link to="/scheduleToday" activeProps={{ className: 'block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0' }}>
+                  {/* <Link to="/scheduleToday" activeProps={{ className: 'block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0' }}>
                     <div className="text-center ">
                             <FontAwesomeIcon icon={faCalendarAlt} className="text-xl text-fuchsia-900 dark:text-fuchsia-800 font-extrabold" />
                       </div>
                     Citas Actuales
-                  </Link> 
+                  </Link>  */}
                 </ul>
               </div>
       

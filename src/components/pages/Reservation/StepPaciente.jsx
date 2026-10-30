@@ -104,8 +104,9 @@ export function StepPaciente({ reservaData, onNext }) {
             />
             <input 
               className='h-9 px-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-fuchsia-900 bg-white'
-              placeholder='Telefono 55-1234-5678' type='tel' required={isAddingNew} id="telefono" 
-              name="telefono" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}" 
+              placeholder='Telefono 5512345678' type='tel' required={isAddingNew} id="telefono" 
+              name="telefono" pattern="[0-9]{10}" 
+              onInvalid={(e) => e.target.setCustomValidity('El teléfono debe tener exactamente 10 dígitos numéricos.')}
               value={nuevoFamiliar.telefono}
               onChange={(e) => setNuevoFamiliar({...nuevoFamiliar, telefono: e.target.value})}
             />

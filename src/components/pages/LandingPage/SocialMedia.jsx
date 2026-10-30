@@ -41,10 +41,10 @@ const SocialMedia = ()  => {
     <section className="w-full max-w-7xl mx-auto px-5 py-12 text-center">
       {/* Encabezado de la sección */}
       <div className="mb-10">
-        <span className="text-brand font-bold text-sm uppercase tracking-widest bg-amber-100 dark:bg-amber-950/40 px-3 py-1 rounded-full">
+        <span className="text-fg-purple font-bold text-sm uppercase tracking-widest bg-amber-100 dark:bg-fuchsia-950/40 px-3 py-1 rounded-full">
           Comunidad
         </span>
-        <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-blue-900/70  mt-3 mb-4">
+        <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-fuchsia-900/70  mt-3 mb-4">
           ¡Síguenos en nuestras Redes!
         </h2>
         <p className="text-gray-600 dark:text-gray-400 font-medium max-w-xl mx-auto text-base md:text-lg">
@@ -60,7 +60,7 @@ const SocialMedia = ()  => {
             href={red.link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex flex-col items-center p-6 bg-white dark:bg-blue-900/70 border border-gray-100 dark:border-zinc-800 rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${red.hover}`}
+            className={`flex flex-col items-center p-6 bg-zinc-900 text-white dark:bg-fuchsia-900 dark:text-white rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${red.hover}`}
           >
             {/* Círculo con el Icono de la Red Social */}
             <div className={`w-14 h-14 rounded-full flex items-center justify-center text-2xl mb-4 shadow-md ${red.color}`}>
@@ -86,13 +86,3 @@ const SocialMedia = ()  => {
 
 export default SocialMedia;
 
-export const socialMediaRoute = createRoute({
-  getParentRoute: () => Route,
-  path: '/socialMedia',
-  loader: async () => {
-    const res = await fetch('https://api.github.com') // Nota: Usa la API, github.com normal devuelve HTML y rompería el .json()
-    if (!res.ok) throw new Error('Error al cargar los datos')
-    return res.json()
-  },
-  component: SocialMedia,
-})

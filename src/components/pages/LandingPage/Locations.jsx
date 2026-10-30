@@ -3,6 +3,7 @@ import Hero from "../../layouts/Hero";
 import { createRoute } from '@tanstack/react-router'
 import { Route } from '../../../routes/__root'
 import ImgLogo from '../../../../public/logo.jpg'
+import SocialMedia from '../LandingPage/SocialMedia'
 
 const Locations = () => {
     return(
@@ -30,9 +31,13 @@ const Locations = () => {
         {/* Eliminamos el 'px-15' fijo que desbordaba el diseño en pantallas medianas */}
         <div className="w-full px-2 md:px-6">
             <Contacto />
-        </div>    
-
+            
+        </div>     
     </div>  
+    <div className="w-full px-2 md:px-6">
+            <SocialMedia />
+            
+        </div>  
 </div>
 
             </>
