@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
+import { useSearch } from "@tanstack/react-router";
 import { obtenerCita } from '../../../api/calendar'
 
-const ReservationDetail = (props) =>{
+const ReservationDetail = () =>{
+    const search = useSearch({from: '/__public/reservationDetail'});
+    const { citaId } = search;
     const [reservaData, setReservaData] = useState({hora: '',
         dia: '',
         medicoNombre: '',
         pacienteNombre: ''});
 
     useEffect(() => {
-        if(props.citaId){
-            obtenerCita(props.citaId)
+        if(citaId){
+            obtenerCita(citaId)
                 .then((data) => setReservaData(data))
                 .catch((err) => console.error(err))
         }
-    },[props.citaId]);
+    },[citaId]);
 
     return(
         <div className='min-h-screen w-full flex items-center justify-center bg-gray-50/50 p-4 md:p-30 animate-fade-in'>
