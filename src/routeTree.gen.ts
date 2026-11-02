@@ -25,6 +25,7 @@ import { Route as _publicLocationsRouteImport } from './routes/__public/location
 import { Route as _publicLoginRouteImport } from './routes/__public/login'
 import { Route as _publicRegisterRouteImport } from './routes/__public/register'
 import { Route as _publicReservationRouteImport } from './routes/__public/reservation'
+import { Route as _publicReservationDetailRouteImport } from './routes/__public/reservationDetail'
 import { Route as _publicScheduleTodayRouteImport } from './routes/__public/scheduleToday'
 import { Route as _publicServicesRouteImport } from './routes/__public/services'
 import { Route as _publicSocialMediaRouteImport } from './routes/__public/socialMedia'
@@ -107,6 +108,12 @@ const _publicReservationRoute = _publicReservationRouteImport.update({
   path: '/reservation',
   getParentRoute: () => _publicRoute,
 } as any)
+const _publicReservationDetailRoute =
+  _publicReservationDetailRouteImport.update({
+    id: '/reservationDetail',
+    path: '/reservationDetail',
+    getParentRoute: () => _publicRoute,
+  } as any)
 const _publicScheduleTodayRoute = _publicScheduleTodayRouteImport.update({
   id: '/scheduleToday',
   path: '/scheduleToday',
@@ -138,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof _publicLoginRoute
   '/register': typeof _publicRegisterRoute
   '/reservation': typeof _publicReservationRoute
+  '/reservationDetail': typeof _publicReservationDetailRoute
   '/scheduleToday': typeof _publicScheduleTodayRoute
   '/services': typeof _publicServicesRoute
   '/socialMedia': typeof _publicSocialMediaRoute
@@ -157,6 +165,7 @@ export interface FileRoutesByTo {
   '/login': typeof _publicLoginRoute
   '/register': typeof _publicRegisterRoute
   '/reservation': typeof _publicReservationRoute
+  '/reservationDetail': typeof _publicReservationDetailRoute
   '/scheduleToday': typeof _publicScheduleTodayRoute
   '/services': typeof _publicServicesRoute
   '/socialMedia': typeof _publicSocialMediaRoute
@@ -179,6 +188,7 @@ export interface FileRoutesById {
   '/__public/login': typeof _publicLoginRoute
   '/__public/register': typeof _publicRegisterRoute
   '/__public/reservation': typeof _publicReservationRoute
+  '/__public/reservationDetail': typeof _publicReservationDetailRoute
   '/__public/scheduleToday': typeof _publicScheduleTodayRoute
   '/__public/services': typeof _publicServicesRoute
   '/__public/socialMedia': typeof _publicSocialMediaRoute
@@ -200,6 +210,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reservation'
+    | '/reservationDetail'
     | '/scheduleToday'
     | '/services'
     | '/socialMedia'
@@ -219,6 +230,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/register'
     | '/reservation'
+    | '/reservationDetail'
     | '/scheduleToday'
     | '/services'
     | '/socialMedia'
@@ -240,6 +252,7 @@ export interface FileRouteTypes {
     | '/__public/login'
     | '/__public/register'
     | '/__public/reservation'
+    | '/__public/reservationDetail'
     | '/__public/scheduleToday'
     | '/__public/services'
     | '/__public/socialMedia'
@@ -368,6 +381,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof _publicReservationRouteImport
       parentRoute: typeof _publicRoute
     }
+    '/__public/reservationDetail': {
+      id: '/__public/reservationDetail'
+      path: '/reservationDetail'
+      fullPath: '/reservationDetail'
+      preLoaderRoute: typeof _publicReservationDetailRouteImport
+      parentRoute: typeof _publicRoute
+    }
     '/__public/scheduleToday': {
       id: '/__public/scheduleToday'
       path: '/scheduleToday'
@@ -416,6 +436,7 @@ interface _publicRouteChildren {
   _publicLoginRoute: typeof _publicLoginRoute
   _publicRegisterRoute: typeof _publicRegisterRoute
   _publicReservationRoute: typeof _publicReservationRoute
+  _publicReservationDetailRoute: typeof _publicReservationDetailRoute
   _publicScheduleTodayRoute: typeof _publicScheduleTodayRoute
   _publicServicesRoute: typeof _publicServicesRoute
   _publicSocialMediaRoute: typeof _publicSocialMediaRoute
@@ -429,6 +450,7 @@ const _publicRouteChildren: _publicRouteChildren = {
   _publicLoginRoute: _publicLoginRoute,
   _publicRegisterRoute: _publicRegisterRoute,
   _publicReservationRoute: _publicReservationRoute,
+  _publicReservationDetailRoute: _publicReservationDetailRoute,
   _publicScheduleTodayRoute: _publicScheduleTodayRoute,
   _publicServicesRoute: _publicServicesRoute,
   _publicSocialMediaRoute: _publicSocialMediaRoute,

@@ -23,13 +23,13 @@ const [selectedId, setSelectedId] = useState(null);
       id: 2,
       titulo: "Ultrasonido Estructural",
       descripcion: `Nos permite evaluar el crecimiento y desarrollo del feto de manera minuciosa tambien es conocido 
-                    como ultrasonido anatómico y es parte esesncial para el cuidado prenatal."`,
+                    como ultrasonido anatómico y es parte esesncial para el cuidado prenatal.`,
       icon: faStaffSnake
     },
     {
       id: 3,
       titulo: "Consulta Ginecológica",
-      descripcion: "ncluye la prevención, el diagnóstico y el tratamiento de afecciones ginecológicas.",
+      descripcion: "Incluye la prevención, el diagnóstico y el tratamiento de afecciones ginecológicas.",
       icon: faStaffSnake
     }
   ];

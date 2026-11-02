@@ -4,10 +4,12 @@ import { format, parseISO } from 'date-fns'
 import { es } from 'date-fns/locale'
 import { crearCita } from '../../../api/calendar'
 import { Eraser } from 'lucide-react'
+import QRCode from 'react-qr-code'
 
 export default function ReservationConfirm({ reservaData, onBack }) {
-  const [isSaving, setIsSaving] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [isSaving, setIsSaving] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [citaId, setCitaId] = useState();
   
 
   // Formateamos la fecha recolectada de forma elegante para el ticket
@@ -32,7 +34,8 @@ export default function ReservationConfirm({ reservaData, onBack }) {
     await new Promise(resolve => setTimeout(resolve, 1500))
     crearCita(CrearCitaRequestDTO)
     .then((response) => {      
-      setIsSuccess(true);      
+      setIsSuccess(true);
+      setCitaId(response.data);   
       return;
     })
     .catch((error) => {
@@ -45,6 +48,8 @@ export default function ReservationConfirm({ reservaData, onBack }) {
     });
 
   }
+
+  var linkViewCitaDetail = `${import.meta.env.VITE_URL}/reservationDetail?citaId=${citaId}`; 
 
   // PANTALLA DE ÉXITO (Confirmación Visual Final)
   if (isSuccess) {
@@ -65,6 +70,15 @@ export default function ReservationConfirm({ reservaData, onBack }) {
           <p>👨‍⚕️ <span className='text-gray-900 font-bold'>{reservaData.medicoNombre}</span></p>
           <p>📅 <span className='text-gray-900 font-bold capitalize'>{fechaFormateada}</span> a las <span className='text-fuchsia-900 font-bold'>{reservaData.hora}</span></p>
           <p>👤 Paciente: <span className='text-gray-900 font-bold'>{reservaData.pacienteId === 'nuevo-familiar' ? reservaData.nuevoPaciente?.nombre : 'Carlos Mendoza'}</span></p>
+        </div>
+
+        <div>
+          <QRCode 
+          value={linkViewCitaDetail}
+          size={256}              // Tamaño en píxeles (opcional)
+          bgColor="#FFFFFF"       // Color de fondo (opcional)
+          fgColor="#000000"       // Color del código (opcional)
+          level="M" />
         </div>
       </div>
     )

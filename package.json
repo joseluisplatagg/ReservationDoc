@@ -27,6 +27,7 @@
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-day-picker": "^10.0.2",
     "react-dom": "^19.2.0",
+    "react-qr-code": "^2.2.0",
     "react-router-dom": "^7.9.6"
   },
   "devDependencies": {

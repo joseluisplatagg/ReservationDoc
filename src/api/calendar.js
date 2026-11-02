@@ -28,9 +28,26 @@ export const listarCitas = async () => {
     },
   });
     
-    console.log("res",response);
     if (response == null ) {
       // Maneja los errores de la API, por ejemplo, credenciales incorrectas
       return 0;
     }  else return response;
+};
+
+export const obtenerCita = async ( idCita ) =>{
+  try{
+    const response = await apiClient.get(`/obtener-cita-id?citaId=06441165-9b85-4e70-9699-1dc7c2028c01`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if(response == undefined || response == null) return 0;
+
+      return response.data;
+  } catch (ex){
+
+  }
 };
