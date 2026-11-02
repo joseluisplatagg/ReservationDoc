@@ -13,7 +13,7 @@ const ReservationDetail = (props) =>{
                 .then((data) => setReservaData(data))
                 .catch((err) => console.error(err))
         }
-    },[citaId]);
+    },[props.citaId]);
 
     return(
         <div className='min-h-screen w-full flex items-center justify-center bg-gray-50/50 p-4 md:p-30 animate-fade-in'>
