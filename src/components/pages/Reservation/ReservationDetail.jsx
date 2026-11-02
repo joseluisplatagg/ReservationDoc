@@ -9,7 +9,7 @@ const ReservationDetail = (props) =>{
 
     useEffect(() => {
         if(props.citaId){
-            obtenerCita(dapropsta.citaId)
+            obtenerCita(props.citaId)
                 .then((data) => setReservaData(data))
                 .catch((err) => console.error(err))
         }
