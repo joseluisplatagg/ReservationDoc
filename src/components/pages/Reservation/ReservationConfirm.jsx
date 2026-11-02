@@ -61,7 +61,7 @@ export default function ReservationConfirm({ reservaData, onBack }) {
         <div className='flex flex-col gap-1'>
           <h2 className='text-2xl font-black text-gray-900'>¡Reservación Confirmada!</h2>
           <p className='text-sm text-gray-500 max-w-sm mx-auto'>
-            La cita ha sido registrada exitosamente en el sistema médico. Se ha enviado una notificación al correo electrónico.
+            La cita ha sido registrada exitosamente en el sistema médico.
           </p>
         </div>
 
@@ -70,6 +70,13 @@ export default function ReservationConfirm({ reservaData, onBack }) {
           <p>👨‍⚕️ <span className='text-gray-900 font-bold'>{reservaData.medicoNombre}</span></p>
           <p>📅 <span className='text-gray-900 font-bold capitalize'>{fechaFormateada}</span> a las <span className='text-fuchsia-900 font-bold'>{reservaData.hora}</span></p>
           <p>👤 Paciente: <span className='text-gray-900 font-bold'>{reservaData.pacienteId === 'nuevo-familiar' ? reservaData.nuevoPaciente?.nombre : 'Carlos Mendoza'}</span></p>
+        </div>
+
+        <div className='flex flex-col gap-1'>
+          <h2 className='text-2xl font-black text-red-900'>¡IMPORTANTE!</h2>
+          <h2 className='text-xl text-black-500 '>
+            Toma una captura de pantalla del QR para mostrarlo el día de tu cita
+          </h2>
         </div>
 
         <div>

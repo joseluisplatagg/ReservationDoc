@@ -36,7 +36,7 @@ export const listarCitas = async () => {
 
 export const obtenerCita = async ( idCita ) =>{
   try{
-    const response = await apiClient.get(`/obtener-cita-id?citaId=06441165-9b85-4e70-9699-1dc7c2028c01`,
+    const response = await apiClient.get(`/obtener-cita-id?citaId=${idCita}`,
       {
         method: 'GET',
         headers: {
