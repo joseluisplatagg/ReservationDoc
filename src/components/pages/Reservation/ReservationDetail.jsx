@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { obtenerCita } from '../../../api/calendar'
 
-const ReservationDetail = (citaId) =>{
+const ReservationDetail = (props) =>{
     const [reservaData, setReservaData] = useState({hora: '',
         dia: '',
         medicoNombre: '',
         pacienteNombre: ''});
 
     useEffect(() => {
-        if(citaId){
-            obtenerCita(citaId)
+        if(props.citaId){
+            obtenerCita(dapropsta.citaId)
                 .then((data) => setReservaData(data))
                 .catch((err) => console.error(err))
         }
