@@ -28,7 +28,7 @@ export default function Register() {
     
     try {
       // Aquí ejecutarías tu mutación o petición fetch hacia el backend
-      console.log('Datos enviados al servidor:', formData)
+      //console.log('Datos enviados al servidor:', formData)
       
       // Tras el registro exitoso, rediriges al login o dashboard
       // navigate({ to: '/login' })

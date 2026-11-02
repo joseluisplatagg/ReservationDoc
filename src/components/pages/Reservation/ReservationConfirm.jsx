@@ -35,7 +35,7 @@ export default function ReservationConfirm({ reservaData, onBack }) {
     crearCita(CrearCitaRequestDTO)
     .then((response) => {      
       setIsSuccess(true);
-      setCitaId(response.data);   
+      setCitaId(response.data.citaId);   
       return;
     })
     .catch((error) => {
@@ -59,7 +59,7 @@ export default function ReservationConfirm({ reservaData, onBack }) {
           ✓
         </div>
         <div className='flex flex-col gap-1'>
-          <h2 className='text-2xl font-black text-gray-900'>¡Reservación Confirmada!</h2>
+          <h2 className='text-2xl font-black text-fuchsia-900'>¡Reservación Confirmada!</h2>
           <p className='text-sm text-gray-500 max-w-sm mx-auto'>
             La cita ha sido registrada exitosamente en el sistema médico.
           </p>
@@ -73,7 +73,7 @@ export default function ReservationConfirm({ reservaData, onBack }) {
         </div>
 
         <div className='flex flex-col gap-1'>
-          <h2 className='text-2xl font-black text-red-900'>¡IMPORTANTE!</h2>
+          <h2 className='text-2xl font-black text-red-900'>IMPORTANTE</h2>
           <h2 className='text-xl text-black-500 '>
             Toma una captura de pantalla del QR para mostrarlo el día de tu cita
           </h2>
@@ -86,6 +86,10 @@ export default function ReservationConfirm({ reservaData, onBack }) {
           bgColor="#FFFFFF"       // Color de fondo (opcional)
           fgColor="#000000"       // Color del código (opcional)
           level="M" />
+        </div>
+
+        <div className='flex flex-col gap-1'>
+          <h2 className='text-2xl font-black text-fuchsia-900'>¡ Gracias por tu preferencia !</h2>
         </div>
       </div>
     )

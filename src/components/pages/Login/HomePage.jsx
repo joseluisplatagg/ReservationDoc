@@ -17,7 +17,6 @@ const HomePage = () =>{
         // o si tienes una función de "fetchUser" en caso de que el token exista pero no la caché.
         // En este caso, simplemente usamos los datos de la caché si existen.
     });
-    console.log("home",isError);
     
     return(
        <>
